@@ -1,6 +1,0 @@
-D:\work\He\CommonTest\WindowsServiceTest\bin\Debug\WindowsServiceTest.exe.config
-D:\work\He\CommonTest\WindowsServiceTest\bin\Debug\WindowsServiceTest.exe
-D:\work\He\CommonTest\WindowsServiceTest\bin\Debug\WindowsServiceTest.pdb
-D:\work\He\CommonTest\WindowsServiceTest\obj\Debug\WindowsServiceTest.csprojResolveAssemblyReference.cache
-D:\work\He\CommonTest\WindowsServiceTest\obj\Debug\WindowsServiceTest.exe
-D:\work\He\CommonTest\WindowsServiceTest\obj\Debug\WindowsServiceTest.pdb

@@ -2,3 +2,5 @@
 /*.suo
 /*.gitignore
 /WindowsServiceTest/obj
+/ListTest/bin
+/ListTest/obj

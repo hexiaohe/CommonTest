@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+
+  <schedule>
+    <!--修改此配置文件需要停止服务-->
+    <!--<job>
+      <name>DemoJob</name>
+      <group>DemoJobGroup</group>
+      <description>测试任务</description>
+      <job-type>SchoolPal.WindowServices.Jobs.DemoJob,SchoolPal.WindowServices</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>-->
+    <!--0/10 * * * * ? 10秒执行1次-->
+    <!--0 1/2 * * * ? 延迟1分钟后2分钟执行1次-->
+    <!--0 0 1 * * ? 每天凌晨0点-->
+    <!--0 0 10 ? * MON 每周一上午10执行-->
+    <!--0 30 10 ? * MON 每周一上午10点30分执行-->
+    <!--<trigger>
+      <cron>
+        <name>DemoJobTrigger</name>
+        <group>DemoJobTriggerGroup</group>
+        <job-name>DemoJob</job-name>
+        <job-group>DemoJobGroup</job-group>
+        <cron-expression>0/15 * * * * ?</cron-expression>
+      </cron>
+    </trigger>-->
+  </schedule>
+</job-scheduling-data>
+

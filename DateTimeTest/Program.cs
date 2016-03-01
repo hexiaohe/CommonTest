@@ -25,6 +25,8 @@ namespace DateTimeTest
             DateTime dt4 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, 0);
             Console.WriteLine("本周一" + dt4);
 
+            Test.AddMonths();
+
             Console.ReadLine();
         }
     }
@@ -36,6 +38,11 @@ namespace DateTimeTest
             int wd1=(int)weekday;
             int wd2=(int)dt.DayOfWeek;
             return wd2==wd1?dt.AddDays(7*Number):dt.AddDays(7*Number-wd2+wd1);
+        }
+
+        public static void AddMonths() 
+        {
+            Console.WriteLine(DateTime.Parse("2015-12-28").AddMonths(1));
         }
     }
 }

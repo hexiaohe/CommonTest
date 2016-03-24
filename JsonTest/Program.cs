@@ -7,7 +7,10 @@ using Newtonsoft.Json;
 
 namespace JsonTest
 {
-    class Program
+    /// <summary>
+    /// Json测试项目
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {

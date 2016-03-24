@@ -7,7 +7,10 @@ using ThoughtWorks.QRCode.Codec;
 
 namespace ThoughtWorksQrCodeTest
 {
-    class Program
+    /// <summary>
+    /// ThoughtWorksQrCode二维码生成器 测试项目
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {

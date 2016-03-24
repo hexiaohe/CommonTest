@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ListTest
 {
-    class Program
+    /// <summary>
+    /// List测试项目
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {

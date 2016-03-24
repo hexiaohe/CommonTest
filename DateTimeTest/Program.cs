@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DateTimeTest
 {
-    class Program
+    /// <summary>
+    /// DateTime测试项目
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -37,12 +40,19 @@ namespace DateTimeTest
     }
 
     public class Test 
-    { 
+    {
+        /// <summary>
+        /// 根据指定日期，获得上周、下周等日期
+        /// </summary>
+        /// <param name="dt">指定日期</param>
+        /// <param name="weekday">要获得星期几，如周一、周二等</param>
+        /// <param name="Number">指定差值（-1：上周，-2：上上周，1：下周，0：本周）</param>
+        /// <returns></returns>
         public DateTime GetWeekUpOfDate(DateTime dt,DayOfWeek weekday,int Number)
         {
-            int wd1=(int)weekday;
-            int wd2=(int)dt.DayOfWeek;
-            return wd2==wd1?dt.AddDays(7*Number):dt.AddDays(7*Number-wd2+wd1);
+            int gainWD = (int)weekday;
+            int assignWD = (int)dt.DayOfWeek;
+            return assignWD == gainWD ? dt.AddDays(7 * Number) : dt.AddDays(7 * Number - assignWD + gainWD);
         }
 
         /// <summary>
@@ -55,6 +65,9 @@ namespace DateTimeTest
             Console.WriteLine("AddDays：当前时间" + DateTime.Now.AddDays(30) + " --- 指定时间：" + DateTime.Parse("2016-03-13").AddDays(30));
         }
 
+        /// <summary>
+        /// unix时间戳和DateTime互转
+        /// </summary>
         public static void IntToDateTime()
         {
             DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
@@ -66,6 +79,9 @@ namespace DateTimeTest
             Console.WriteLine("IntToDateTime1:" + (DateTime.Now - startTime).TotalSeconds);
         }
 
+        /// <summary>
+        /// TotalSeconds时间相差的秒数，TotalMilliseconds时间相差的毫秒数
+        /// </summary>
         public static void Tee() 
         { 
             Console.WriteLine("TEE1:" + (DateTime.Now - DateTime.Parse("0001-01-01 00:00:00")).TotalSeconds);

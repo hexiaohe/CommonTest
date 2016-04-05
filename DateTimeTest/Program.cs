@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 namespace DateTimeTest
 {
     /// <summary>
-    /// DateTime测试项目
+    /// DateTime 测试项目
     /// </summary>
     public class Program
     {
+        /// <summary>
+        /// access
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Test t = new Test();
 
             //获得上周、下周日期
             DateTime dt = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -1);
-            Console.WriteLine("上周一"+dt +"--"+dt.ToString("yyyy-MM-dd 00:00:00"));
+            Console.WriteLine("上周一" + dt + "--" + dt.ToString("yyyy-MM-dd 00:00:00"));
             Console.WriteLine("上周日" + dt.AddDays(6));
 
             DateTime dt2 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -2);
@@ -39,7 +43,7 @@ namespace DateTimeTest
         }
     }
 
-    public class Test 
+    public class Test
     {
         /// <summary>
         /// 根据指定日期，获得上周、下周等日期
@@ -48,7 +52,7 @@ namespace DateTimeTest
         /// <param name="weekday">要获得星期几，如周一、周二等</param>
         /// <param name="Number">指定差值（-1：上周，-2：上上周，1：下周，0：本周）</param>
         /// <returns></returns>
-        public DateTime GetWeekUpOfDate(DateTime dt,DayOfWeek weekday,int Number)
+        public DateTime GetWeekUpOfDate(DateTime dt, DayOfWeek weekday, int Number)
         {
             int gainWD = (int)weekday;
             int assignWD = (int)dt.DayOfWeek;
@@ -58,7 +62,7 @@ namespace DateTimeTest
         /// <summary>
         /// 添加天数和月
         /// </summary>
-        public static void AddDaysMonths() 
+        public static void AddDaysMonths()
         {
             Console.WriteLine(DateTime.Parse("2015-12-28").AddMonths(1));
 
@@ -82,8 +86,8 @@ namespace DateTimeTest
         /// <summary>
         /// TotalSeconds时间相差的秒数，TotalMilliseconds时间相差的毫秒数
         /// </summary>
-        public static void Tee() 
-        { 
+        public static void Tee()
+        {
             Console.WriteLine("TEE1:" + (DateTime.Now - DateTime.Parse("0001-01-01 00:00:00")).TotalSeconds);
             Console.WriteLine("TEE2:" + (2592000 - 86400));
         }

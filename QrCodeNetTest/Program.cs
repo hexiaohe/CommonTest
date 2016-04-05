@@ -11,7 +11,7 @@ using Gma.QrCodeNet.Encoding.Windows.Render;
 namespace QrCodeNetTest
 {
     /// <summary>
-    /// QrCode二维码生成器 测试项目
+    /// QrCode 二维码生成器 测试项目
     /// 参考：http://www.tuicool.com/articles/f6ruei
     /// </summary>
     public class Program
@@ -58,6 +58,6 @@ namespace QrCodeNetTest
                 return false;
             }
             return true;
-        }   
+        }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace DateTimeTest
 {
@@ -39,7 +37,7 @@ namespace DateTimeTest
 
             Test.IntToDateTime();
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 
@@ -74,7 +72,7 @@ namespace DateTimeTest
         /// </summary>
         public static void IntToDateTime()
         {
-            DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            var startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
 
             // unix时间戳 to 时间
             Console.WriteLine("IntToDateTime:" + startTime.AddSeconds(1395658984));

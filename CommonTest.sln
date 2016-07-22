@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebToImage", "WebToImage\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "myWebToImage", "myWebToImage\myWebToImage.csproj", "{41BC51B4-523A-4623-9AE5-717DBE5C63ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomGuardProcess", "PhantomGuardProcess\PhantomGuardProcess.csproj", "{A9BB0E21-BE1A-4C14-85B0-178DB16CF52B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomJsConsole", "PhantomJsConsole\PhantomJsConsole.csproj", "{E0DC5877-C27C-4D88-92A7-83AD96904E95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{41BC51B4-523A-4623-9AE5-717DBE5C63ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41BC51B4-523A-4623-9AE5-717DBE5C63ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41BC51B4-523A-4623-9AE5-717DBE5C63ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9BB0E21-BE1A-4C14-85B0-178DB16CF52B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9BB0E21-BE1A-4C14-85B0-178DB16CF52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9BB0E21-BE1A-4C14-85B0-178DB16CF52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9BB0E21-BE1A-4C14-85B0-178DB16CF52B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DC5877-C27C-4D88-92A7-83AD96904E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DC5877-C27C-4D88-92A7-83AD96904E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DC5877-C27C-4D88-92A7-83AD96904E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DC5877-C27C-4D88-92A7-83AD96904E95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

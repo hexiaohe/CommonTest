@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -62,6 +63,29 @@ namespace myWebToImage
 
                 bitmap.Save(saveFileDialog.FileName);  // 保存图片
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                PhantomJsTest.TestPhantomJsImgBase();
+            }
+
+            //Process[] pp = Process.GetProcesses();
+            //for (int i = 0; i < pp.Length - 1; i++)
+            //{
+            //    var ppp = pp[i];
+            //    if (ppp.ProcessName == "cmd")
+            //    {
+            //        ppp.Kill();
+            //    }
+            //}
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PhantomJsTest.PhantomJsProcess();
         }
     }
 }

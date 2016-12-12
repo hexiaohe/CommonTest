@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using NReco.PhantomJS;
@@ -15,45 +16,65 @@ namespace PhantomJsConsole
     {
         public static void Main(string[] args)
         {
-            //Console.WriteLine(new Random().Next(0,9999));
-            Console.WriteLine("*** Begin " + DateTime.Now + " *** ");
-            var url = "http://xiaobao1001.cn/Home/InvitationRoute?p=" + HttpUtility.UrlEncode(string.Format("oldinvitenew?id={0}&iscutpage=true", 12418));
-            //for (var i = 1; i <= 10; i++)
-            //{
-            //    Console.WriteLine(Guid.NewGuid());
-            //    Console.WriteLine(Guid.NewGuid().ToString("N"));
-            //    Console.WriteLine("*** Begin " + DateTime.Now + " 线程:" + i + " *** ");
-            //    var i1 = i;
-            //    Task.Run(() => { new NRecoPhantomJSTest().Test(i1); });
-            //}
-            //new NRecoPhantomJSTest().Test(0);
-            //Console.WriteLine("*** End " + DateTime.Now + " *** ");
+              //Console.WriteLine(new Random().Next(0,2));//输出2个随机数0，1
+//            Console.WriteLine("*** Begin " + DateTime.Now + " *** ");
+//            var url = "http://xiaobao1001.cn/Home/InvitationRoute?p=" + HttpUtility.UrlEncode(string.Format("oldinvitenew?id={0}&iscutpage=true", 12418));
+//            //for (var i = 1; i <= 10; i++)
+//            //{
+//            //    Console.WriteLine(Guid.NewGuid());
+//            //    Console.WriteLine(Guid.NewGuid().ToString("N"));
+//            //    Console.WriteLine("*** Begin " + DateTime.Now + " 线程:" + i + " *** ");
+//            //    var i1 = i;
+//            //    Task.Run(() => { new NRecoPhantomJSTest().Test(i1); });
+//            //}
+//            //new NRecoPhantomJSTest().Test(0);
+//            //Console.WriteLine("*** End " + DateTime.Now + " *** ");
 
-            //Console.WriteLine((DateTime.Now.AddSeconds(5) - DateTime.Now).Ticks);
-            //var ticks = (DateTime.Now.AddSeconds(5) - DateTime.Now).Ticks;
-            //var ts = new TimeSpan(ticks);
-            //Console.WriteLine(ts.TotalSeconds);
-            var html = @"<!DOCTYPE html><html><head lang=""zh-CN""><meta charset=""UTF-8""><title>生产图片</title></head><body>
-                        <div class=""A4-page-content""><div class=""A4-content-slogan""><div class=""content-slogan-tirle"">圣安东尼跆拳道</div><div class=""content-slogan-tips"">专注致力于跆拳道培训</div></div>
-                        <div class=""A4-content-code""><div class=""content-code-box""><img src=""http://greedyint-dev.oss-cn-hangzhou.aliyuncs.com/xbshow/QrCode/20160722180710-a9dbc.jpg"" /></div>
-                        <div class=""content-code-tips"">扫码免费试课</div></div><div class=""A4-content-address""><div class=""content-address-item""><h3 class=""item-address-h3"">联系方式</h3>
-                        <p>座机：0571-88888888<br/>刘老师&nbsp;电话：13733333333<br/>微信：admin007</p></div><div class=""content-address-item""><h3 class=""item-address-h3"">地址</h3><p>圣安东尼跆拳道学校宁波分校3号楼201室</p>
-                        </div></div></body></html>";
-            var ms = new MemoryStream();
-            //var html = String.Format("<body>Hello world: {0}</body>", DateTime.Now);
-            //http://xiaobao1001.cn/Home/InvitationRoute?p=oldinvitenew?id=12418&iscutpage=true
-            var resUrl = string.Format("http://{0}/Home/InvitationRoute?p={1}", "xiaobao1001.cn", HttpUtility.UrlEncode(string.Format("oldinvitenew?id={0}&iscutpage=true", 615)));
-            var htmlToImageConv = new NReco.ImageGenerator.HtmlToImageConverter();
-            //htmlToImageConv.Height = 1200;
-            //htmlToImageConv.Width = 1080;
-            //htmlToImageConv.ExecutionTimeout = new TimeSpan(DateTime.Now.AddSeconds(10).Ticks);
-            //htmlToImageConv.GenerateImageFromFile("https://detail.tmall.com/item.htm?spm=a220o.1000855.w5001-12072074390.4.4y6Jne&id=530873358617&rn=eb52ae8b524e7c1f0463cfb60c25acd0&abbucket=1&scene=taobao_shop", ImageFormat.Jpeg.ToString(), ms);
-            htmlToImageConv.GenerateImage(html, ImageFormat.Jpeg.ToString(), ms);
-            var bitMap = new Bitmap(ms);
-            var path = @"D:\work\He\CommonTest\PhantomJsConsole\bin\Debug\" + Guid.NewGuid();
-            bitMap.Save(path + ".jpg");
-            bitMap.Dispose();
-
+//            //Console.WriteLine((DateTime.Now.AddSeconds(5) - DateTime.Now).Ticks);
+//            //var ticks = (DateTime.Now.AddSeconds(5) - DateTime.Now).Ticks;
+//            //var ts = new TimeSpan(ticks);
+//            //Console.WriteLine(ts.TotalSeconds);
+//            var html = @"<!DOCTYPE html><html><head lang=""zh-CN""><meta charset=""UTF-8""><title>生产图片</title></head><body>
+//                        <div class=""A4-page-content""><div class=""A4-content-slogan""><div class=""content-slogan-tirle"">圣安东尼跆拳道</div><div class=""content-slogan-tips"">专注致力于跆拳道培训</div></div>
+//                        <div class=""A4-content-code""><div class=""content-code-box""><img src=""http://greedyint-dev.oss-cn-hangzhou.aliyuncs.com/xbshow/QrCode/20160722180710-a9dbc.jpg"" /></div>
+//                        <div class=""content-code-tips"">扫码免费试课</div></div><div class=""A4-content-address""><div class=""content-address-item""><h3 class=""item-address-h3"">联系方式</h3>
+//                        <p>座机：0571-88888888<br/>刘老师&nbsp;电话：13733333333<br/>微信：admin007</p></div><div class=""content-address-item""><h3 class=""item-address-h3"">地址</h3><p>圣安东尼跆拳道学校宁波分校3号楼201室</p>
+//                        </div></div></body></html>";
+//            var ms = new MemoryStream();
+//            //var html = String.Format("<body>Hello world: {0}</body>", DateTime.Now);
+//            //http://xiaobao1001.cn/Home/InvitationRoute?p=oldinvitenew?id=12418&iscutpage=true
+//            var resUrl = string.Format("http://{0}/Home/InvitationRoute?p={1}", "xiaobao1001.cn", HttpUtility.UrlEncode(string.Format("oldinvitenew?id={0}&iscutpage=true", 615)));
+//            var htmlToImageConv = new NReco.ImageGenerator.HtmlToImageConverter();
+//            //htmlToImageConv.Height = 1200;
+//            //htmlToImageConv.Width = 1080;
+//            //htmlToImageConv.ExecutionTimeout = new TimeSpan(DateTime.Now.AddSeconds(10).Ticks);
+//            //htmlToImageConv.GenerateImageFromFile("https://detail.tmall.com/item.htm?spm=a220o.1000855.w5001-12072074390.4.4y6Jne&id=530873358617&rn=eb52ae8b524e7c1f0463cfb60c25acd0&abbucket=1&scene=taobao_shop", ImageFormat.Jpeg.ToString(), ms);
+//            htmlToImageConv.GenerateImage(html, ImageFormat.Jpeg.ToString(), ms);
+//            var bitMap = new Bitmap(ms);
+//            var path = @"D:\work\He\CommonTest\PhantomJsConsole\bin\Debug\" + Guid.NewGuid();
+//            bitMap.Save(path + ".jpg");
+//            bitMap.Dispose();
+            var bb = BusinessInfoHelper.Instance;
+            //bb.AddQueue(0, 123, "123_openId");
+            for (var k=0; k< 10; k++)
+            {
+                var kk = k;
+                var no = bb.GetRandom();
+                Task.Run(() =>
+                {
+                    Console.WriteLine("线程k:" + kk + ";no:" + no);
+                    BusinessInfoHelper.Instance.AddQueue(no, 123 + kk, "123_" + kk + "_openId");
+                }
+                );
+            }
+            Task.Run(() =>
+            {
+                Thread.Sleep(2200);
+                var queueInfo1 = bb.GetQueueInfo(0);
+                var queueInfo2 = bb.GetQueueInfo(1);
+                Console.WriteLine("queueInfo1 " + queueInfo1.Count + ";queueInfo2 " + queueInfo2.Count);
+            });
+            bb.Start();
             Console.ReadLine();
         }
     }

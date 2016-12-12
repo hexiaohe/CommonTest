@@ -18,24 +18,52 @@ namespace DateTimeTest
             Test t = new Test();
 
             //获得上周、下周日期
-            DateTime dt = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -1);
-            Console.WriteLine("上周一" + dt + "--" + dt.ToString("yyyy-MM-dd 00:00:00"));
-            Console.WriteLine("上周日" + dt.AddDays(6));
+            //DateTime dt = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -1);
+            //Console.WriteLine("上周一" + dt + "--" + dt.ToString("yyyy-MM-dd 00:00:00"));
+            //Console.WriteLine("上周日" + dt.AddDays(6));
 
-            DateTime dt2 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -2);
-            Console.WriteLine("上上周一" + dt2);
+            //DateTime dt2 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, -2);
+            //Console.WriteLine("上上周一" + dt2);
 
-            DateTime dt3 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, 1);
-            Console.WriteLine("下周一" + dt3);
+            //DateTime dt3 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, 1);
+            //Console.WriteLine("下周一" + dt3);
 
-            DateTime dt4 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, 0);
-            Console.WriteLine("本周一" + dt4);
+            //DateTime dt4 = t.GetWeekUpOfDate(DateTime.Now, DayOfWeek.Monday, 0);
+            //Console.WriteLine("本周一" + dt4);
 
-            Console.WriteLine("Days：时间差" + (DateTime.Parse("2016-12-31 00:00:00") - DateTime.Parse("2015-10-30 23:05:28")).Days);
+            //Console.WriteLine("Days：时间差" + (DateTime.Parse("2016-12-31 00:00:00") - DateTime.Parse("2015-10-30 23:05:28")).Days);
 
-            Test.AddDaysMonths();
+            //Console.WriteLine("VIP时间：" + DateTime.Parse("2016-07-12 13:44:49").Date.AddDays(310));//.AddMinutes(-1));
 
-            Test.IntToDateTime();
+            //Test.AddDaysMonths();
+
+            //Test.IntToDateTime();
+
+//            逻辑加法通常用符号“+”或“∨”来表示。逻辑加法运算规则如下：
+//0+0=0， 0∨0=0
+//0+1=1， 0∨1=1
+//1+0=1， 1∨0=1
+//1+1=1， 1∨1=1
+
+//    逻辑乘法通常用符号“×”或“∧”或“·”来表示。逻辑乘法运算规则如下：
+//0×0=0， 0∧0=0， 0·0=0
+//0×1=0， 0∧1=0， 0·1=0
+//1×0=0， 1∧0=0， 1·0=0
+//1×1=1， 1∧1=1， 1·1=1
+            Console.WriteLine("测试未使用FlagsAttribute属性");
+            Color1 MyColor1 = Color1.Red | Color1.Blue & Color1.Green;
+            Console.WriteLine("MyColor1={0}", MyColor1);
+
+            Color1 MyColor_1 = Color1.Red | Color1.Blue;
+            Console.WriteLine("MyColor_1={0}", MyColor_1);
+            Console.WriteLine("MyColor_2={0}", Color1.Red & Color1.Blue & Color1.Green);
+
+            Console.WriteLine("测试使用FlagsAttribute属性");
+            Color2 MyColor2 = Color2.Red | Color2.Blue;
+            Console.WriteLine("MyColor2={0}", MyColor2);
+
+            Console.WriteLine("MyColor2_1={0}", (short)(Color2.Red | Color2.Blue));
+            Console.WriteLine("MyColor2_2={0}", Color2.Red & Color2.Blue);
 
             Console.ReadKey();
         }
@@ -90,4 +118,21 @@ namespace DateTimeTest
             Console.WriteLine("TEE2:" + (2592000 - 86400));
         }
     }
+
+    enum Color1
+    {
+        Black = 0,
+        Red = 1,
+        Green = 2,
+        Blue = 4
+    };
+
+    [FlagsAttribute]
+    enum Color2
+    {
+        Black = 0,
+        Red = 1,
+        Green = 2,
+        Blue = 4
+    };
 }

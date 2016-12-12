@@ -10,99 +10,129 @@ namespace PhantomJsConsole
     //队列临时类  
     public class QueueInfo
     {
-        public string medias { get; set; }
-        public string proids { get; set; }
-        public string host { get; set; }
-        public string userid { get; set; }
-        public string feedid { get; set; }
+        public long UserId { get; set; }
+
+        public string OpenId { get; set; }
     }  
 
+    /// <summary>
+    /// 原理：利用生产者消费者模式进行入列出列操作  
+    /// </summary>
     public class BusinessInfoHelper
     {
-        #region 解决发布时含有优质媒体时，前台页面卡住的现象
-        //原理：利用生产者消费者模式进行入列出列操作  
+        #region
 
         public readonly static BusinessInfoHelper Instance = new BusinessInfoHelper();
-
         private BusinessInfoHelper()
+        { }
+
+        private readonly Random _rand = new Random();
+        private Queue<QueueInfo> queueList1 = new Queue<QueueInfo>();
+        private Queue<QueueInfo> queueList2 = new Queue<QueueInfo>();
+
+        /// <summary>
+        /// 获得随机数
+        /// </summary>
+        /// <returns></returns>
+        public int GetRandom()
         {
-            
-
-
+            return _rand.Next(0, 2);
         }
 
-        private Queue<QueueInfo> ListQueue = new Queue<QueueInfo>();
-
-        public void AddQueue(string medias, string proids, string host, string userid, string feedid) //入列  
+        /// <summary>
+        /// 入列
+        /// </summary>
+        /// <param name="queueNo"></param>
+        /// <param name="userId"></param>
+        /// <param name="openId"></param>
+        public void AddQueue(int queueNo, long userId, string openId)
         {
-            QueueInfo queueinfo = new QueueInfo();
-
-            queueinfo.medias = medias;
-            queueinfo.proids = proids;
-            queueinfo.host = host;
-            queueinfo.userid = userid;
-            queueinfo.feedid = feedid;
-            ListQueue.Enqueue(queueinfo);
+            var queueInfo = new QueueInfo { UserId = userId, OpenId = openId };
+            if (queueNo == 0)
+            {
+                queueList1.Enqueue(queueInfo);
+            }
+            else
+            {
+                queueList2.Enqueue(queueInfo);
+            }
         }
 
-        public void Start()//启动  
+        /// <summary>
+        /// TODO 注意删除
+        /// </summary>
+        /// <param name="queueNo"></param>
+        /// <returns></returns>
+        public Queue<QueueInfo> GetQueueInfo(int queueNo)
         {
-            Thread thread = new Thread(threadStart);
-            thread.IsBackground = true;
-            thread.Start();
+            return queueNo == 0 ? queueList1 : queueList2;
         }
 
-        private void threadStart()
+        /// <summary>
+        /// 启动
+        /// </summary>
+        public void Start()
+        {
+            var thread1 = new Thread(ThreadStart1) { IsBackground = true };
+            thread1.Start();
+
+            var thread2 = new Thread(ThreadStart2) { IsBackground = true };
+            thread2.Start();
+        }
+
+        private void ThreadStart1()
         {
             while (true)
             {
-                if (ListQueue.Count > 0)
+                if (queueList1.Count > 0)
                 {
-                    try
-                    {
-                        ScanQueue();
-                    }
-                    catch (Exception ex)
-                    {
-                        //LO_LogInfo.WLlog(ex.ToString());
-                    }
+                    ScanQueue(queueList1);
                 }
                 else
                 {
-                    //没有任务，休息3秒钟  
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
                 }
             }
         }
 
-       
-
-        //要执行的方法  
-        private void ScanQueue()
+        private void ThreadStart2()
         {
-            while (ListQueue.Count > 0)
+            while (true)
+            {
+                if (queueList2.Count > 0)
+                {
+                    ScanQueue(queueList2);
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 业务代码
+        /// </summary>
+        private void ScanQueue(Queue<QueueInfo> queueList)
+        {
+            while (queueList.Count > 0)
             {
                 try
                 {
                     //从队列中取出  
-                    QueueInfo queueinfo = ListQueue.Dequeue();
+                    QueueInfo queueinfo = queueList.Dequeue();
 
                     //取出的queueinfo就可以用了，里面有你要的东西  
                     //以下就是处理程序了  
                     //。。。。。。  
-
-                   //调用生成图片
-
-
+                    Console.WriteLine("userId:" + queueinfo.UserId + ";OpenId:" + queueinfo.OpenId);
                 }
                 catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
             }
         }
-
-
         #endregion  
     }
 }

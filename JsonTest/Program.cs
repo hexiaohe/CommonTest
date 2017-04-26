@@ -14,6 +14,11 @@ namespace JsonTest
     {
         static void Main(string[] args)
         {
+            var ii = "abcdef";
+            var iii = ii.Substring(0, 5);
+            var temp = string.Empty;
+            var s = JsonConvert.DeserializeObject<List<ChoiceResponses>>(string.Empty);
+
             string josn = @"{'_answers': [{'_questionResponses': [{'_choiceResponses': [{'_selected': true},{'_selected': false},{'_selected': false},
                         {'_selected': false},
                         {'_selected': false}]}]},{'_questionResponses': [
